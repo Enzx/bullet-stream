@@ -1,4 +1,5 @@
 using System;
+using BulletSteam.Gameplay;
 using BulletSteam.Player;
 using UnityEngine;
 
@@ -13,17 +14,25 @@ namespace BulletSteam.Enemies
         [SerializeField] private float _attackRange = 1f;
         private Rigidbody2D _rigidbody;
         private Vector2 _direction;
+        private GameplayWorld _gameplayWorld;
+
+        public delegate void Callback(Enemy enemy);
+
+        public Callback OnDied;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            
         }
+        
 
         private void Update()
         {
             Vector2 velocity = _direction * _speed;
             _rigidbody.linearVelocity = velocity;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, _direction, _attackRange, LayerMask.GetMask("Player"));
+            RaycastHit2D hit =
+                Physics2D.Raycast(transform.position, _direction, _attackRange, LayerMask.GetMask("Player"));
             Debug.DrawLine(transform.position, transform.position + (Vector3)_direction * _attackRange, Color.red);
             if (hit.collider != null)
             {
@@ -51,6 +60,7 @@ namespace BulletSteam.Enemies
 
         private void Die()
         {
+            OnDied(this);
             Destroy(gameObject);
         }
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5981856512510659527}
   - component: {fileID: 5394720832854278419}
   - component: {fileID: 2495631905710137040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,6 +102,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b530236e75e4a57882026bc6fbfdd38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 10
+  _lifetime: 5
+  _damage: 1
+  _targetMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!50 &5394720832854278419
 Rigidbody2D:
   serializedVersion: 5
