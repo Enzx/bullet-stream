@@ -10,6 +10,7 @@ namespace BulletSteam.Enemies
         [SerializeField] private float _health = 100f;
         [SerializeField] private float _speed = 5f;
         [SerializeField] private float _damage = 10f;
+        [SerializeField] private float _attackRange = 1f;
         private Rigidbody2D _rigidbody;
         private Vector2 _direction;
 
@@ -20,13 +21,16 @@ namespace BulletSteam.Enemies
 
         private void Update()
         {
-            _rigidbody.linearVelocity = _direction * _speed;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, _direction, 1f, LayerMask.GetMask("Player"));
+            Vector2 velocity = _direction * _speed;
+            _rigidbody.linearVelocity = velocity;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, _direction, _attackRange, LayerMask.GetMask("Player"));
+            Debug.DrawLine(transform.position, transform.position + (Vector3)_direction * _attackRange, Color.red);
             if (hit.collider != null)
             {
                 PlayerController player = hit.collider.GetComponent<PlayerController>();
                 if (player is null) return;
                 player.TakeDamage(_damage * Time.deltaTime);
+                _direction = Vector2.zero;
             }
         }
 

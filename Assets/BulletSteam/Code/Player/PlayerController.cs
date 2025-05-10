@@ -32,14 +32,14 @@ namespace BulletSteam.Player
             {
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _blastRadius, _enemyLayerMask);
                 
-                foreach (Collider2D collider in colliders)
+                foreach (Collider2D col in colliders)
                 {
-                    Enemy enemy = collider.GetComponent<Enemy>();
+                    Enemy enemy = col.GetComponent<Enemy>();
                     if (enemy != null)
                     {
                         Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
                         rb.AddForce(
-                            (collider.transform.position - transform.position).normalized * _blastRadius,
+                            (col.transform.position - transform.position).normalized * _blastRadius,
                             ForceMode2D.Impulse);
                     }
                 }
