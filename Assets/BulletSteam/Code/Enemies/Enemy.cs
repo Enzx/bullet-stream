@@ -10,10 +10,16 @@ namespace BulletSteam.Enemies
         [SerializeField] private float _speed = 5f;
         [SerializeField] private float _damage = 10f;
         private Rigidbody2D _rigidbody;
+        private Vector2 _direction;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+        }
+
+        private void Update()
+        {
+            _rigidbody.linearVelocity = _direction * _speed;
         }
 
         public void TakeDamage(float damage)
@@ -25,9 +31,10 @@ namespace BulletSteam.Enemies
             }
         }
 
+
         public void Move(Vector2 direction)
         {
-            _rigidbody.linearVelocity = direction.normalized * _speed;
+            _direction = direction.normalized;
         }
 
         private void Die()
