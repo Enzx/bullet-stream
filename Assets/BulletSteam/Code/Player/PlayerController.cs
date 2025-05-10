@@ -9,6 +9,7 @@ namespace BulletSteam.Player
         [SerializeField] private ProjectileController _projectilePrefab;
         [SerializeField] LayerMask _enemyLayerMask;
         [SerializeField] private float _blastRadius = 5f;
+        [SerializeField] private float _health = 100f;
         private Camera _camera;
 
         private void Awake()
@@ -43,6 +44,21 @@ namespace BulletSteam.Player
                     }
                 }
             }
+        }
+
+        public void TakeDamage(float damage)
+        {
+            _health -= damage;
+            if (_health <= 0)
+            {
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            Debug.Log("Player died");
+            gameObject.SetActive(false);
         }
     }
 }

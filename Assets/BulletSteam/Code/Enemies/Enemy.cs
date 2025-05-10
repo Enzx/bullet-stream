@@ -1,4 +1,5 @@
 using System;
+using BulletSteam.Player;
 using UnityEngine;
 
 namespace BulletSteam.Enemies
@@ -20,6 +21,13 @@ namespace BulletSteam.Enemies
         private void Update()
         {
             _rigidbody.linearVelocity = _direction * _speed;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, _direction, 1f, LayerMask.GetMask("Player"));
+            if (hit.collider != null)
+            {
+                PlayerController player = hit.collider.GetComponent<PlayerController>();
+                if (player is null) return;
+                player.TakeDamage(_damage * Time.deltaTime);
+            }
         }
 
         public void TakeDamage(float damage)
