@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace BulletSteam.Player
 {
+    //Logic
+
+
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private ProjectileController _projectilePrefab;
@@ -30,50 +33,37 @@ namespace BulletSteam.Player
 
         private void Update()
         {
-            _elapsed += Time.deltaTime;
-            if (_elapsed >= _fireRate)
-            {
-                _elapsed = 0;
-                float minDistance = float.MaxValue;
-                Enemy nearestEnemy = null;
+//             _elapsed += Time.deltaTime;
+//             if (_elapsed >= _fireRate)
+//             {
+//                 _elapsed = 0;
+//                 float minDistance = float.MaxValue;
+//                 Enemy nearestEnemy = null;
+// // Targeting 
+//                 foreach (Enemy enemy in _gameplayWorld.Enemies)
+//                 {
+//                     float distance = Vector2.Distance(transform.position, enemy.transform.position);
+//                     if (distance < minDistance)
+//                     {
+//                         minDistance = distance;
+//                         nearestEnemy = enemy;
+//                     }
+//                 }
+//                 
+// // Spawn Bullet
+//                 if (nearestEnemy != null)
+//                 {
+//                     Vector3 targetPosition = nearestEnemy.transform.position;
+//
+//                     ProjectileController projectile =
+//                         Instantiate(_projectilePrefab, transform.position, Quaternion.identity);
+//                     Vector3 direction = targetPosition - transform.position;
+//                     projectile.SetVelocity(direction);
+//                 }
+//             }
 
-                foreach (Enemy enemy in _gameplayWorld.Enemies)
-                {
-                    float distance = Vector2.Distance(transform.position, enemy.transform.position);
-                    if (distance < minDistance)
-                    {
-                        minDistance = distance;
-                        nearestEnemy = enemy;
-                    }
-                }
 
-                if (nearestEnemy != null)
-                {
-                    Vector3 targetPosition = nearestEnemy.transform.position;
-
-                    ProjectileController projectile =
-                        Instantiate(_projectilePrefab, transform.position, Quaternion.identity);
-                    Vector3 direction = targetPosition - transform.position;
-                    projectile.SetVelocity(direction);
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _blastRadius, _enemyLayerMask);
-
-                foreach (Collider2D col in colliders)
-                {
-                    Enemy enemy = col.GetComponent<Enemy>();
-                    if (enemy != null)
-                    {
-                        Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-                        rb.AddForce(
-                            (col.transform.position - transform.position).normalized * _blastRadius,
-                            ForceMode2D.Impulse);
-                    }
-                }
-            }
+         
         }
 
         public void TakeDamage(float damage)
