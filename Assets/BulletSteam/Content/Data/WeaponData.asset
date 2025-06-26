@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireRate: 1
   ProjectileData: {fileID: 11400000, guid: a988e7aa18a91ac46a9884594f36a0b7, type: 2}
-  ProjectileView: {fileID: 7208408328454766385, guid: 072ba0db3999a6b458eabbd6c0ddbfff, type: 3}
+  ProjectileView: {fileID: 7895092034586114443, guid: adbcea5e2d3c37b4a898e5823770f692, type: 3}

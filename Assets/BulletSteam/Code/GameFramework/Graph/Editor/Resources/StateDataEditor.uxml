@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:Toolbar
+            style="align-items: center; justify-content: flex-start; border-top-width: 1px; border-bottom-width: 1px; margin-top: 0; margin-bottom: 5px;">
+        <ui:Label tabindex="-1" text="Actions" parse-escape-sequences="true" display-tooltip-when-elided="true"/>
+        <uie:ToolbarSpacer style="flex-grow: 1;"/>
+        <uie:ToolbarPopupSearchField focusable="true"
+                                     style="width: 50%; max-width: 50%; flex-shrink: 1; flex-grow: 1;"/>
+        <uie:ToolbarButton text="+" parse-escape-sequences="true" display-tooltip-when-elided="true"/>
+    </uie:Toolbar>
+    <ui:ListView focusable="true" reorderable="true" binding-path="Actions" virtualization-method="DynamicHeight"
+                 show-foldout-header="false" show-alternating-row-backgrounds="All" name="actions-list"
+                 show-add-remove-footer="false"
+                 style="min-width: 350px; background-color: rgb(25, 25, 25); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px;"/>
+</ui:UXML>

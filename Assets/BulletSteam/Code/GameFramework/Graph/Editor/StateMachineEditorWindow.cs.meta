@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0f2fae1325704d13afc90b773797a4a2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_ViewDataDictionary: {instanceID: 0}
+  - _graphViewAsset: {fileID: 9197481963319205126, guid: 43d55d9fa027ec84ebffdb77db57ca73, type: 3}
+  - _graphViewStyle: {fileID: 7433441132597879392, guid: 217fcab20657f2741b3f70e91c8d345b, type: 3}
+  - _lastOpenedGraph: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

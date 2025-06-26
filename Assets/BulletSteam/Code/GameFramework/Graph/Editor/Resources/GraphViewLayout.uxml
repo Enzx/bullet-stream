@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:Toolbar>
+        <uie:ToolbarMenu tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true"
+                         style="width: 20px; min-width: 20px;"/>
+        <ui:Label tabindex="-1" text="state_machine_name" parse-escape-sequences="false"
+                  display-tooltip-when-elided="true" name="graph-name-label" binding-path="GraphData.m_Name"
+                  enable-rich-text="false"
+                  style="flex-direction: column; -unity-text-align: middle-left; text-overflow: ellipsis; max-width: 250px; padding-left: 2px; overflow: hidden;"/>
+        <uie:ToolbarSpacer style="flex-direction: row; flex-grow: 1;"/>
+        <uie:ToolbarPopupSearchField focusable="true"/>
+    </uie:Toolbar>
+    <ui:VisualElement name="graph-container" style="flex-grow: 1; flex-direction: row;">
+        <BulletSteam.GameFramework.Graph.Editor.SplitView orientation="Horizontal">
+            <ui:VisualElement name="preview-panel" style="flex-grow: 1; min-width: 20px;">
+                <ui:IMGUIContainer name="editor-imgui" style="flex-grow: 1;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="graph-panel" style="flex-direction: row;">
+                <BulletSteam.GameFramework.Graph.Editor.StateMachineGraph>
+                    <ui:VisualElement name="options-row"
+                                      style="flex-grow: 1; flex-direction: row; justify-content: flex-start; align-self: stretch; min-height: 20px; height: 30px; max-height: 30px;">
+                        <ui:Button text="map" parse-escape-sequences="true" display-tooltip-when-elided="true"
+                                   name="minimap-button"
+                                   style="position: relative; margin-right: 5px; margin-left: 5px; padding-right: 3px; padding-top: 3px; padding-bottom: 3px; padding-left: 3px; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px;"/>
+                        <ui:Button text="board" parse-escape-sequences="true" display-tooltip-when-elided="true"
+                                   name="blackboard-button"
+                                   style="position: relative; margin-left: 5px; margin-right: 5px; padding-right: 3px; padding-top: 3px; padding-bottom: 3px; padding-left: 3px; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px;"/>
+                    </ui:VisualElement>
+                </BulletSteam.GameFramework.Graph.Editor.StateMachineGraph>
+            </ui:VisualElement>
+        </BulletSteam.GameFramework.Graph.Editor.SplitView>
+        <ui:VisualElement name="cover"
+                          style="flex-grow: 1; position: absolute; width: 100%; height: 100%; background-color: rgb(32, 32, 32); align-self: center; align-items: center; justify-content: center;">
+            <ui:Label tabindex="-1" text="Open or create a statemachine asset" parse-escape-sequences="true"
+                      display-tooltip-when-elided="true"
+                      style="justify-content: center; align-items: auto; align-self: center; -unity-text-align: middle-center; white-space: nowrap; font-size: 16px; color: rgb(103, 103, 103);"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
